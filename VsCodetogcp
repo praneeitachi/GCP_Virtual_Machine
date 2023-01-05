@@ -1,0 +1,37 @@
+How to connect from Vsccode to GCP VM 
+======================================
+
+1. create ssh keys in local machine 
+ssh-keygen -t rsa -f $HOME/.ssh/<key-name> -C <user-name>
+ex: ssh-keygen -t rsa -f $HOME/.ssh/gcp -C vamsikaravipati58
+
+2. config file create under .ssh that was genarated
+
+Host <any name>
+HostName <external-ip-gcp>
+    User <gcp user>
+    IdentityFile <path of key(private key)>
+
+
+Host my-gcp-vm
+HostName 35.244.54.193
+    User vamsikaravipati58
+    IdentityFile /home/affine/.ssh/gcp
+   
+3. we gave path to a private key which means it can be accesd with a public key 
+   now we have to add a public key to the GCP VM 
+   we will add a project level keys here 
+   ( goto compute engine >settings > metadata > ssh keys > (add public key here
+  
+4. Vscode Extensions > Remote SSH (install)
+   ctrl +shift +p 
+   type "remote ssh: add new host"
+   after that connect to ssh config 
+   (path that you created it will show)
+ 
+    
+    
+
+alternative---
+
+code server 
